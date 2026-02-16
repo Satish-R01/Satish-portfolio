@@ -1,0 +1,304 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Satish R | Cybersecurity</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Inter', sans-serif;
+}
+
+body{
+    background: radial-gradient(circle at top left,#1e293b,#020617 70%);
+    color:#f1f5f9;
+    overflow-x:hidden;
+}
+
+/* NAVBAR */
+nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:25px 8%;
+}
+
+nav h1{
+    font-weight:800;
+    font-size:1.4rem;
+    background:linear-gradient(90deg,#38bdf8,#6366f1);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+nav ul{
+    display:flex;
+    gap:35px;
+    list-style:none;
+}
+
+nav a{
+    text-decoration:none;
+    color:#cbd5e1;
+    font-weight:500;
+    transition:0.3s;
+}
+
+nav a:hover{
+    color:#38bdf8;
+}
+
+/* HERO */
+.hero{
+    padding:120px 8%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+}
+
+.hero-text{
+    max-width:650px;
+}
+
+.hero h2{
+    font-size:3.5rem;
+    font-weight:800;
+    line-height:1.1;
+}
+
+.hero h2 span{
+    background:linear-gradient(90deg,#38bdf8,#6366f1);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.hero p{
+    margin-top:25px;
+    font-size:1.1rem;
+    opacity:0.8;
+    line-height:1.6;
+}
+
+.buttons{
+    margin-top:40px;
+    display:flex;
+    gap:20px;
+}
+
+.btn{
+    padding:14px 32px;
+    border-radius:40px;
+    font-weight:600;
+    border:none;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.primary{
+    background:linear-gradient(90deg,#38bdf8,#6366f1);
+    color:#fff;
+}
+
+.primary:hover{
+    transform:translateY(-4px);
+    box-shadow:0 0 25px rgba(99,102,241,0.6);
+}
+
+.secondary{
+    background:transparent;
+    border:1px solid #38bdf8;
+    color:#38bdf8;
+}
+
+.secondary:hover{
+    background:#38bdf8;
+    color:#000;
+}
+
+/* STATS */
+.stats{
+    display:flex;
+    gap:60px;
+    margin-top:70px;
+    flex-wrap:wrap;
+}
+
+.stat h3{
+    font-size:2rem;
+    color:#38bdf8;
+}
+
+.stat p{
+    opacity:0.7;
+}
+
+/* SECTION */
+section{
+    padding:100px 8%;
+}
+
+.section-title{
+    text-align:center;
+    font-size:2.2rem;
+    margin-bottom:60px;
+    font-weight:700;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:30px;
+}
+
+.card{
+    background:rgba(255,255,255,0.05);
+    padding:35px;
+    border-radius:20px;
+    backdrop-filter:blur(12px);
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 0 30px rgba(56,189,248,0.3);
+}
+
+.card h3{
+    margin-bottom:20px;
+    color:#38bdf8;
+}
+
+/* CTA */
+.cta{
+    text-align:center;
+    padding:120px 8%;
+    background:linear-gradient(90deg,#0f172a,#1e293b);
+}
+
+.cta h2{
+    font-size:2.5rem;
+}
+
+footer{
+    text-align:center;
+    padding:40px;
+    background:#020617;
+    opacity:0.7;
+}
+
+@media(max-width:900px){
+    .hero{
+        flex-direction:column;
+        text-align:center;
+    }
+    nav ul{
+        display:none;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <h1>Satish R</h1>
+    <ul>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
+
+<div class="hero">
+    <div class="hero-text">
+        <h2>Securing <span>Digital Infrastructure</span> With Precision</h2>
+        <p>
+            Cybersecurity enthusiast specializing in vulnerability assessment,
+            penetration testing, and threat detection.
+        </p>
+
+        <div class="buttons">
+            <a href="mailto:sr44453716@gmail.com?subject=Cybersecurity Project Inquiry&body=Hello Satish,%0D%0A%0D%0AI would like to discuss a cybersecurity opportunity with you.%0D%0A%0D%0ARegards,">
+                <button class="btn primary">Contact Me</button>
+            </a>
+
+            <a href="Satish_R_Resume.pdf" download>
+                <button class="btn secondary">Download Resume</button>
+            </a>
+        </div>
+
+        <div class="stats">
+            <div class="stat">
+                <h3>3+</h3>
+                <p>Internships</p>
+            </div>
+            <div class="stat">
+                <h3>20+</h3>
+                <p>CTF Labs</p>
+            </div>
+            <div class="stat">
+                <h3>100%</h3>
+                <p>Learning Driven</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section id="services">
+    <h2 class="section-title">Core Expertise</h2>
+    <div class="cards">
+        <div class="card">
+            <h3>Vulnerability Assessment</h3>
+            <p>Identifying system weaknesses using structured testing methodologies.</p>
+        </div>
+        <div class="card">
+            <h3>Penetration Testing</h3>
+            <p>Simulating real-world attacks to evaluate security posture.</p>
+        </div>
+        <div class="card">
+            <h3>Threat Detection</h3>
+            <p>Log analysis and monitoring using SIEM tools.</p>
+        </div>
+    </div>
+</section>
+
+<section id="experience">
+    <h2 class="section-title">Professional Experience</h2>
+    <div class="cards">
+        <div class="card">
+            <h3>Cyber Security Intern</h3>
+            <p>Zeel Code Labs</p>
+        </div>
+        <div class="card">
+            <h3>Penetration Testing Intern</h3>
+            <p>Deltaware Solutions</p>
+        </div>
+        <div class="card">
+            <h3>Full Stack Intern</h3>
+            <p>Softmusk Info Pvt Ltd</p>
+        </div>
+    </div>
+</section>
+
+<div class="cta" id="contact">
+    <h2>Ready to Strengthen Your Security?</h2>
+    <a href="mailto:sr44453716@gmail.com?subject=Cybersecurity Consultation&body=Hello Satish,%0D%0A%0D%0AI want to connect regarding security services.%0D%0A%0D%0AThank you.">
+        <button class="btn primary">Contact Me</button>
+    </a>
+</div>
+
+<footer>
+© 2026 Satish R | Protecting One Vulnerability at a Time
+</footer>
+
+</body>
+</html>
+
