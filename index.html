@@ -51,6 +51,33 @@ main,nav,footer{position:relative;z-index:2}
 .bgrant.on{display:flex;animation:gpulse 1s ease}
 .bgrant small{color:var(--t);letter-spacing:0;font-weight:400}
 @media(max-width:560px){.bbody{font-size:11px;padding:14px 14px 16px;line-height:1.75}.bl{gap:7px}.bl .ts{min-width:58px}.bl .st{min-width:46px}.bh{font-size:10.5px;letter-spacing:.12em}}
+.bwrap{width:min(640px,100%);display:flex;flex-direction:column;align-items:center;gap:16px}
+.blogo{position:relative;font-family:var(--mono);font-weight:800;font-size:clamp(34px,9vw,56px);letter-spacing:.14em;color:#e8fff6;text-shadow:0 0 18px rgba(0,255,156,.45)}
+.blogo::before,.blogo::after{content:attr(data-t);position:absolute;inset:0;overflow:hidden}
+.blogo::before{color:#ff3b6b;transform:translate(-2px,0);clip-path:inset(0 0 60% 0);animation:gl1 2.2s infinite steps(1)}
+.blogo::after{color:#22d3ee;transform:translate(2px,0);clip-path:inset(55% 0 0 0);animation:gl2 2.2s infinite steps(1)}
+@keyframes gl1{0%,86%,100%{transform:translate(0);opacity:0}88%{transform:translate(-4px,-1px);opacity:1}92%{transform:translate(3px,1px);opacity:1}}
+@keyframes gl2{0%,84%,100%{transform:translate(0);opacity:0}87%{transform:translate(4px,1px);opacity:1}91%{transform:translate(-3px,0);opacity:1}}
+.bsub{font-family:var(--mono);font-size:11px;letter-spacing:.35em;color:var(--g);margin-top:-10px}
+.bl .warn{color:#ff3b6b}.bl.alert .tx{color:#ffb3c4}
+#boot.red .bwin{border-color:rgba(255,59,107,.7);box-shadow:0 0 0 1px rgba(255,59,107,.3),0 0 70px rgba(255,59,107,.25)}
+#boot.red::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 120px rgba(255,59,107,.35);animation:redp .5s ease infinite alternate;pointer-events:none}
+@keyframes redp{from{opacity:.4}to{opacity:1}}
+#boot.red .bprog div{background:linear-gradient(90deg,#ff3b6b,#ffd166);box-shadow:0 0 10px #ff3b6b}
+.bhex{font-family:var(--mono);font-size:10px;color:#1f3a2e;white-space:nowrap;overflow:hidden;width:100%;text-align:center}
+.bq{margin-top:14px;display:none}
+.bq.on{display:block;animation:fadein .35s ease}
+.bq .pr{color:var(--c);font-size:12px;margin-bottom:10px}
+.bq .pr b{color:var(--g)}
+.bopts{display:grid;gap:8px}
+.bopt{display:flex;align-items:center;gap:10px;width:100%;text-align:left;font-family:var(--mono);font-size:12.5px;color:var(--t);background:rgba(255,255,255,.02);border:1px solid var(--line);border-radius:8px;padding:10px 12px;cursor:pointer;transition:all .18s}
+.bopt kbd{font-family:var(--mono);font-size:11px;color:var(--g);border:1px solid rgba(0,255,156,.4);border-radius:4px;padding:1px 6px}
+.bopt span{color:var(--m);margin-left:auto;font-size:11px}
+.bopt:hover,.bopt.sel{border-color:var(--g);background:rgba(0,255,156,.08);transform:translateX(3px)}
+.btimer{margin-top:10px;font-size:11px;color:var(--m)}
+.bcur{display:inline-block;width:7px;height:13px;background:var(--g);vertical-align:-2px;animation:blink 1s steps(1) infinite;margin-left:2px}
+@keyframes blink{50%{opacity:0}}
+@keyframes fadein{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
 @keyframes gpulse{0%{box-shadow:0 0 0 0 rgba(0,255,156,.5)}100%{box-shadow:0 0 0 14px rgba(0,255,156,0)}}
 #boot .skip{position:absolute;bottom:18px;left:0;right:0;text-align:center;color:var(--m);font-size:11px;letter-spacing:.08em}
 
@@ -205,7 +232,7 @@ footer{text-align:center;padding:40px 20px;color:var(--m);font-family:var(--mono
 </head>
 <body>
 
-<div id="boot"><div class="bwin"><div class="bbar"><i></i><i></i><i></i><span>satish@soc-console: ~</span></div><div class="bbody"><div class="bh">SATISH R // SOC CONSOLE</div><div id="bootTxt"></div><div class="bprog"><div id="bootBar"></div></div><div class="bfoot"><span id="bootStep">starting</span><span id="bootPct">0%</span></div><div class="bgrant" id="bootGrant"><span>ACCESS GRANTED</span><small>Welcome, analyst</small></div></div></div><div class="skip">TAP OR PRESS ANY KEY TO SKIP</div></div>
+<div id="boot"><div class="bwrap"><div class="blogo" data-t="SATISH R">SATISH R</div><div class="bsub">SOC ANALYST // BLUE TEAM</div><div class="bhex" id="bootHex"></div><div class="bwin"><div class="bbar"><i></i><i></i><i></i><span>satish@soc-console: ~</span></div><div class="bbody"><div class="bh">SATISH R // SOC CONSOLE</div><div id="bootTxt"></div><div class="bprog"><div id="bootBar"></div></div><div class="bfoot"><span id="bootStep">starting</span><span id="bootPct">0%</span></div><div class="bq" id="bootQ"><div class="pr">&gt; <b>identify visitor</b> <span id="bqTyped"></span><span class="bcur"></span></div><div class="bopts"><button class="bopt" data-go="experience" data-who="recruiter"><kbd>1</kbd>Recruiter / HR<span>experience</span></button><button class="bopt" data-go="projects" data-who="security engineer"><kbd>2</kbd>Security engineer<span>projects</span></button><button class="bopt" data-go="home" data-who="guest"><kbd>3</kbd>Just exploring<span>home</span></button></div><div class="btimer" id="bqTimer">auto login as guest in 8s</div></div><div class="bgrant" id="bootGrant"><span>ACCESS GRANTED</span><small id="bootWho">Welcome, guest</small></div></div></div></div><div class="skip"><button id="bootSkip" style="all:unset;cursor:pointer;border:1px solid var(--line);border-radius:20px;padding:6px 14px">SKIP INTRO  [ESC]</button></div></div>
 <canvas id="matrix"></canvas>
 <div class="scan"></div>
 <div class="glow" id="glow"></div>
@@ -387,15 +414,34 @@ const DATA={
   if(sessionStorage.getItem('booted')){b.remove();return}
   sessionStorage.setItem('booted',1);
   const L=[["info","Secure session: <b>TLS 1.3</b>"],["ok","SIEM online: <b>Splunk</b>, <b>Wazuh</b>"],["ok","Threat intel: <b>MITRE ATT&amp;CK</b>"],["ok","Log sources: auth, dns, web, sysmon"],["ok","Rules loaded, <b>0</b> open incidents"],["ok","Analyst: <b>SATISH_R</b> (SOC L1)"]];
-  const el=document.getElementById('bootTxt'),bar=document.getElementById('bootBar'),pct=document.getElementById('bootPct'),step=document.getElementById('bootStep'),g=document.getElementById('bootGrant');
-  const t0=performance.now();let i=0,done=false;
-  const ts=()=>{const d=(performance.now()-t0)/1000;return '['+d.toFixed(3).padStart(7,' ')+']'};
-  const end=()=>{if(done)return;done=true;b.classList.add('hide');setTimeout(()=>b.remove(),750)};
+  const $=id=>document.getElementById(id);
+  const el=$('bootTxt'),bar=$('bootBar'),pct=$('bootPct'),step=$('bootStep'),g=$('bootGrant'),q=$('bootQ'),tm=$('bqTimer');
+  const t0=performance.now();let i=0,done=false,chosen=false,cd=8,ti=null;
+  const ts=()=>'['+((performance.now()-t0)/1000).toFixed(3).padStart(7,' ')+']';
+  const end=()=>{if(done)return;done=true;clearInterval(ti);b.classList.add('hide');setTimeout(()=>b.remove(),750)};
+  const pick=btn=>{if(chosen||done)return;chosen=true;clearInterval(ti);
+    document.querySelectorAll('.bopt').forEach(x=>x.classList.toggle('sel',x===btn));
+    const who=btn.dataset.who,target=btn.dataset.go;
+    $('bootWho').textContent='Welcome, '+who;tm.textContent='> routing to /'+target+' ...';
+    setTimeout(()=>{q.style.display='none';g.classList.add('on')},450);
+    setTimeout(()=>{end();setTimeout(()=>{const t=document.getElementById(target);t&&t.scrollIntoView({behavior:'smooth'})},500)},1500)};
+  const ask=()=>{q.classList.add('on');step.textContent='awaiting input';
+    const w='--role ?';let k=0;const ty=setInterval(()=>{$('bqTyped').textContent=w.slice(0,++k);if(k>=w.length)clearInterval(ty)},60);
+    ti=setInterval(()=>{cd--;tm.textContent='auto login as guest in '+cd+'s';if(cd<=0)pick(document.querySelector('.bopt[data-who="guest"]'))},1000)};
+  const hx=$('bootHex');const hexT=setInterval(()=>{if(done)return clearInterval(hexT);let o='';for(let n=0;n<28;n++)o+=Math.floor(Math.random()*256).toString(16).padStart(2,'0')+' ';hx.textContent=o},90);
+  const add=(k,tx,cls)=>{const d=document.createElement('div');d.className='bl'+(cls?' '+cls:'');const lab={ok:'[ OK ]',info:'[INFO]',warn:'[WARN]'}[k];d.innerHTML=`<span class="ts">${ts()}</span><span class="st ${k}">${lab}</span><span class="tx">${tx}</span>`;el.appendChild(d);requestAnimationFrame(()=>d.classList.add('on'))};
+  let alerted=false;
   const next=()=>{if(done)return;
-    if(i<L.length){const [k,tx]=L[i];const d=document.createElement('div');d.className='bl';d.innerHTML=`<span class="ts">${ts()}</span><span class="st ${k}">${k==='ok'?'[ OK ]':'[INFO]'}</span><span class="tx">${tx}</span>`;el.appendChild(d);requestAnimationFrame(()=>d.classList.add('on'));i++;const p=Math.round(i/L.length*100);bar.style.width=p+'%';pct.textContent=p+'%';step.textContent=i<L.length?'loading modules':'ready';setTimeout(next,260)}
-    else{g.classList.add('on');setTimeout(end,900)}};
+    if(i===4&&!alerted){alerted=true;b.classList.add('red');step.textContent='threat detected';
+      add('warn','Brute-force from <b>203.0.113.45</b> (T1110)','alert');
+      setTimeout(()=>{add('info','Correlating 412 failed logins in 60s...');},450);
+      setTimeout(()=>{b.classList.remove('red');add('ok','Threat contained, source IP blocked');setTimeout(next,300)},1250);return}
+    if(i<L.length){const [k,tx]=L[i];add(k,tx);i++;const p=Math.round(i/L.length*100);bar.style.width=p+'%';pct.textContent=p+'%';step.textContent='loading modules';setTimeout(next,240)}
+    else setTimeout(ask,250)};
   setTimeout(next,250);
-  ['click','keydown','touchstart'].forEach(e=>window.addEventListener(e,end,{once:true}));
+  document.querySelectorAll('.bopt').forEach(x=>x.addEventListener('click',e=>{e.stopPropagation();pick(x)}));
+  window.addEventListener('keydown',e=>{if(done)return;const n={'1':0,'2':1,'3':2}[e.key];if(n!==undefined&&q.classList.contains('on'))pick(document.querySelectorAll('.bopt')[n]);else if(e.key==='Escape')end()});
+  $('bootSkip').addEventListener('click',end);
 })();
 
 /* matrix */
