@@ -28,9 +28,31 @@ a{color:inherit;text-decoration:none}
 main,nav,footer{position:relative;z-index:2}
 
 /* boot */
-#boot{position:fixed;inset:0;background:#000;z-index:100;font-family:var(--mono);color:var(--g);padding:28px;font-size:14px;overflow:hidden;transition:opacity .6s}
-#boot.hide{opacity:0;pointer-events:none}
-#boot .skip{position:absolute;bottom:20px;right:24px;color:var(--m);font-size:12px}
+#boot{position:fixed;inset:0;background:radial-gradient(ellipse at center,#07111c 0%,#000 75%);z-index:100;font-family:var(--mono);color:var(--t);display:flex;align-items:center;justify-content:center;padding:24px;overflow:hidden;transition:opacity .7s ease,transform .7s ease}
+#boot.hide{opacity:0;transform:scale(1.03);pointer-events:none}
+#boot::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(255,255,255,.025) 0 1px,transparent 1px 3px);pointer-events:none}
+.bwin{width:min(640px,100%);border:1px solid var(--line);border-radius:12px;background:rgba(8,14,22,.92);box-shadow:0 0 0 1px rgba(0,255,156,.05),0 30px 80px rgba(0,0,0,.6),0 0 60px rgba(0,255,156,.06);overflow:hidden}
+.bbar{display:flex;align-items:center;gap:8px;padding:10px 14px;border-bottom:1px solid var(--line);background:rgba(255,255,255,.02);font-size:12px;color:var(--m)}
+.bbar i{width:10px;height:10px;border-radius:50%;display:inline-block;background:#2a3644}
+.bbar i:nth-child(1){background:#ff5f57}.bbar i:nth-child(2){background:#febc2e}.bbar i:nth-child(3){background:#28c840}
+.bbar span{margin-left:auto}
+.bbody{padding:18px 20px 20px;font-size:13px;line-height:1.85;min-height:250px}
+.bh{color:var(--g);font-weight:800;letter-spacing:.18em;font-size:12px;margin-bottom:10px}
+.bl{display:flex;gap:10px;opacity:0;transform:translateY(4px);transition:all .25s}
+.bl.on{opacity:1;transform:none}
+.bl .ts{color:#3e5266;min-width:72px}
+.bl .st{min-width:54px;font-weight:600}
+.bl .ok{color:var(--g)}.bl .info{color:var(--c)}
+.bl .tx{color:var(--t)}.bl .tx b{color:var(--y);font-weight:600}
+.bprog{margin-top:14px;height:3px;background:#122030;border-radius:3px;overflow:hidden}
+.bprog div{height:100%;width:0;background:linear-gradient(90deg,var(--c),var(--g));transition:width .2s linear;box-shadow:0 0 10px var(--g)}
+.bfoot{display:flex;justify-content:space-between;margin-top:8px;font-size:11px;color:var(--m)}
+.bgrant{margin-top:14px;padding:10px 12px;border:1px solid rgba(0,255,156,.35);border-radius:8px;background:rgba(0,255,156,.06);color:var(--g);font-weight:700;letter-spacing:.12em;font-size:12px;display:none;justify-content:space-between;align-items:center}
+.bgrant.on{display:flex;animation:gpulse 1s ease}
+.bgrant small{color:var(--t);letter-spacing:0;font-weight:400}
+@media(max-width:560px){.bbody{font-size:11px;padding:14px 14px 16px;line-height:1.75}.bl{gap:7px}.bl .ts{min-width:58px}.bl .st{min-width:46px}.bh{font-size:10.5px;letter-spacing:.12em}}
+@keyframes gpulse{0%{box-shadow:0 0 0 0 rgba(0,255,156,.5)}100%{box-shadow:0 0 0 14px rgba(0,255,156,0)}}
+#boot .skip{position:absolute;bottom:18px;left:0;right:0;text-align:center;color:var(--m);font-size:11px;letter-spacing:.08em}
 
 /* nav */
 nav{position:fixed;top:0;left:0;right:0;display:flex;justify-content:space-between;align-items:center;padding:14px 5vw;background:rgba(5,8,13,.75);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);z-index:50}
@@ -183,7 +205,7 @@ footer{text-align:center;padding:40px 20px;color:var(--m);font-family:var(--mono
 </head>
 <body>
 
-<div id="boot"><div id="bootTxt"></div><div class="skip">tap / press any key to skip</div></div>
+<div id="boot"><div class="bwin"><div class="bbar"><i></i><i></i><i></i><span>satish@soc-console: ~</span></div><div class="bbody"><div class="bh">SATISH R // SOC CONSOLE</div><div id="bootTxt"></div><div class="bprog"><div id="bootBar"></div></div><div class="bfoot"><span id="bootStep">starting</span><span id="bootPct">0%</span></div><div class="bgrant" id="bootGrant"><span>ACCESS GRANTED</span><small>Welcome, analyst</small></div></div></div><div class="skip">TAP OR PRESS ANY KEY TO SKIP</div></div>
 <canvas id="matrix"></canvas>
 <div class="scan"></div>
 <div class="glow" id="glow"></div>
@@ -361,13 +383,18 @@ const DATA={
 
 /* boot */
 (function(){
-  const lines=["[ OK ] Initializing secure shell...","[ OK ] Loading SIEM modules: splunk, wazuh","[ OK ] Mounting /home/satish/projects","[ OK ] Checking firewall rules... 0 threats","[ OK ] Authenticating user: SATISH_R","","ACCESS GRANTED_"];
-  const el=document.getElementById('bootTxt'),b=document.getElementById('boot');
-  let i=0,done=false;
-  const end=()=>{if(done)return;done=true;b.classList.add('hide');setTimeout(()=>b.remove(),700)};
+  const b=document.getElementById('boot');
   if(sessionStorage.getItem('booted')){b.remove();return}
   sessionStorage.setItem('booted',1);
-  const t=setInterval(()=>{if(i<lines.length){el.innerHTML+=lines[i]+"<br>";i++}else{clearInterval(t);setTimeout(end,500)}},210);
+  const L=[["info","Secure session: <b>TLS 1.3</b>"],["ok","SIEM online: <b>Splunk</b>, <b>Wazuh</b>"],["ok","Threat intel: <b>MITRE ATT&amp;CK</b>"],["ok","Log sources: auth, dns, web, sysmon"],["ok","Rules loaded, <b>0</b> open incidents"],["ok","Analyst: <b>SATISH_R</b> (SOC L1)"]];
+  const el=document.getElementById('bootTxt'),bar=document.getElementById('bootBar'),pct=document.getElementById('bootPct'),step=document.getElementById('bootStep'),g=document.getElementById('bootGrant');
+  const t0=performance.now();let i=0,done=false;
+  const ts=()=>{const d=(performance.now()-t0)/1000;return '['+d.toFixed(3).padStart(7,' ')+']'};
+  const end=()=>{if(done)return;done=true;b.classList.add('hide');setTimeout(()=>b.remove(),750)};
+  const next=()=>{if(done)return;
+    if(i<L.length){const [k,tx]=L[i];const d=document.createElement('div');d.className='bl';d.innerHTML=`<span class="ts">${ts()}</span><span class="st ${k}">${k==='ok'?'[ OK ]':'[INFO]'}</span><span class="tx">${tx}</span>`;el.appendChild(d);requestAnimationFrame(()=>d.classList.add('on'));i++;const p=Math.round(i/L.length*100);bar.style.width=p+'%';pct.textContent=p+'%';step.textContent=i<L.length?'loading modules':'ready';setTimeout(next,260)}
+    else{g.classList.add('on');setTimeout(end,900)}};
+  setTimeout(next,250);
   ['click','keydown','touchstart'].forEach(e=>window.addEventListener(e,end,{once:true}));
 })();
 
