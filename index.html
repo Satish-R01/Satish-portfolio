@@ -228,7 +228,7 @@ footer{text-align:center;padding:40px 20px;color:var(--m);font-family:var(--mono
 
 <section style="padding-top:20px">
   <div class="stats rev">
-    <div class="stat"><div class="n" data-n="3">0</div><div class="l">Security internships</div></div>
+    <div class="stat"><div class="n" data-n="2">0</div><div class="l">Security internships</div></div>
     <div class="stat"><div class="n" data-n="50" data-s="+">0</div><div class="l">TryHackMe labs &amp; CTFs</div></div>
     <div class="stat"><div class="n" data-n="5">0</div><div class="l">SevenMentor modules</div></div>
     <div class="stat"><div class="n" id="repoCount" data-n="5">0</div><div class="l">GitHub repositories</div></div>
@@ -331,8 +331,13 @@ const DATA={
     {n:"File Integrity Monitor",cat:"SOC",d:"Takes a SHA-256 baseline of a folder and reports modified, new, deleted files and permission changes, like AIDE or Tripwire.",tech:"Python · Hashing",url:"https://github.com/Satish-R01/Cybersecurity-Projects/tree/main/04-File-Integrity-Monitor"},
     {n:"Web Attack Log Detector",cat:"SOC",d:"Reads Apache/Nginx access logs and finds SQL injection, XSS, path traversal, command injection, scanners and directory brute-forcing.",tech:"Python · OWASP",url:"https://github.com/Satish-R01/Cybersecurity-Projects/tree/main/05-Web-Attack-Log-Detector"},
     {n:"DNS Tunneling Detector",cat:"SOC",d:"Reads Zeek dns.log and finds DNS tunneling and data exfiltration using subdomain length, entropy, TXT/NULL queries and hex decoding.",tech:"Python · Zeek",url:"https://github.com/Satish-R01/Cybersecurity-Projects/tree/main/06-DNS-Tunneling-Detector"},
+    {n:"JWT Security Tester",cat:"WAPT",d:"Reads a JSON Web Token and flags common mistakes: alg none, weak HMAC secrets, no expiry and long lifetime. OWASP A07 and WSTG-SESS-10.",tech:"Python · JWT · OWASP",url:"https://github.com/Satish-R01/Cybersecurity-Projects/tree/main/07-JWT-Security-Tester"},
+    {n:"Windows Event Log Analyzer",cat:"SOC",d:"Reads Windows Security, System and Sysmon events and finds attack signs like many 4625 failed logons and a 4624 remote logon after them.",tech:"Python · Windows Event IDs",url:"https://github.com/Satish-R01/Cybersecurity-Projects/tree/main/08-Windows-Event-Log-Analyzer"},
+    {n:"HTTP Security Headers Checker",cat:"WAPT",d:"Checks saved HTTP responses for CSP, HSTS, X-Frame-Options, cookie flags and CORS issues. OWASP A05.",tech:"Python · OWASP",url:"https://github.com/Satish-R01/Cybersecurity-Projects/tree/main/09-HTTP-Security-Headers-Checker"},
+    {n:"Suricata Alert Summarizer",cat:"SOC",d:"Reads Suricata eve.json, groups alerts by signature, maps them to MITRE ATT&CK and shows unblocked high severity alerts first.",tech:"Python · Suricata · MITRE ATT&CK",url:"https://github.com/Satish-R01/Cybersecurity-Projects/tree/main/10-Suricata-Alert-Summarizer"},
+    {n:"Open Redirect Tester",cat:"WAPT",d:"Tests a URL parameter with redirect payloads and checks if the Location header goes to another host. Includes a small local lab app. OWASP A01.",tech:"Python · Flask · OWASP",url:"https://github.com/Satish-R01/Cybersecurity-Projects/tree/main/11-Open-Redirect-Tester"},
     {n:"Cyber Log Analyzer",cat:"SOC",d:"Python tool that parses login logs, counts failed logins per IP and lists the most suspicious source IPs.",tech:"Python",url:"https://github.com/Satish-R01/Cyber-Log-Analyzer"},
-    {n:"Cybersecurity Projects",cat:"Tools",d:"My collection of small security tools: log detectors, phishing checks, scanners and more. A new one gets added regularly.",tech:"Python · Bash",url:"https://github.com/Satish-R01/Cybersecurity-Projects"},
+    {n:"Cybersecurity Projects",cat:"Tools",d:"My collection of 11 small security tools for SOC and web app testing. A new one gets added every day.",tech:"Python · Bash",url:"https://github.com/Satish-R01/Cybersecurity-Projects"},
     {n:"Wazuh SIEM Home Lab",cat:"Lab",d:"Home SOC setup with Wazuh for real-time log analysis and threat detection.",tech:"Wazuh · Linux",url:""},
     {n:"OSINT Investigation Lab",cat:"Lab",d:"Public reconnaissance practice with OSINT tools like theHarvester and Maltego.",tech:"OSINT",url:""}
   ],
@@ -437,7 +442,7 @@ document.querySelectorAll('.rev').forEach(r=>io.observe(r));
     contact:()=>O('email:    <a href="mailto:sr44453716@gmail.com">sr44453716@gmail.com</a>\nphone:    +91 9141784471\nlinkedin: <a href="https://www.linkedin.com/in/cybersatish" target="_blank">linkedin.com/in/cybersatish</a>\ngithub:   <a href="https://github.com/Satish-R01" target="_blank">github.com/Satish-R01</a>'),
     github:()=>{O("opening github...");open('https://github.com/Satish-R01','_blank')},
     linkedin:()=>{O("opening linkedin...");open('https://www.linkedin.com/in/cybersatish','_blank')},
-    resume:()=>O("Diploma CSE (2023-26) · B.Sc. Cyber & Digital Forensics (pursuing)\n3 security internships · SevenMentor Cyber Security Analyst Program\nTools: Splunk, Wazuh, Wireshark, Nmap, Burp, Metasploit, Kali\nLooking for: SOC Analyst L1"),
+    resume:()=>O("Diploma CSE (2023-26) · B.Sc. Cyber & Digital Forensics (pursuing)\n2 security internships · SevenMentor Cyber Security Analyst Program\nTools: Splunk, Wazuh, Wireshark, Nmap, Burp, Metasploit, Kali\nLooking for: SOC Analyst L1"),
     nmap:()=>{O("Starting Nmap scan on cybersatish.tech ...");setTimeout(()=>O("PORT     STATE  SERVICE\n22/tcp   closed ssh\n80/tcp   open   http   -> redirects to https\n443/tcp  open   https  -> you are here\n\nHost is up. Recruiters detected: 1"),700)},
     clear:()=>{out.innerHTML=''},
     ls:()=>O("about.txt  experience/  projects/  skills.json  contact.json"),
